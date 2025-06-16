@@ -22,23 +22,20 @@ pip install selenium webdriver-manager fake-useragent
 ⚙️ Setup
 
     Set your GitHub login credentials as environment variables:
-
 Linux/macOS
 
-export EMAIL="your_email@example.com"
-export PASS="your_password"
+    export EMAIL="your_email@example.com"
+    export PASS="your_password"
 
 Windows (CMD)
 
-set EMAIL=your_email@example.com
-set PASS=your_password
+    set EMAIL=your_email@example.com
+    set PASS=your_password
 
-    Run the script:
+Run the script:
 
-python github_streak.py
+    python github_streak.py
 
 ✅ Output
-
-The script will print your current GitHub login streak to the console:
-
+The script will print your current GitHub login streak to the console
 The Current Login Streak Is: 56
