@@ -8,7 +8,7 @@ This Python script uses Selenium to log in to your GitHub account and fetch your
 - Uses a random user-agent to mimic real browser behavior
 - Navigates to the contribution streak stats image and extracts the streak count
 
-## 🛠 Requirements
+## Requirements
 
 - Python 3.7+
 - Google Chrome browser
@@ -19,9 +19,9 @@ This Python script uses Selenium to log in to your GitHub account and fetch your
 pip install selenium webdriver-manager fake-useragent
 ```
 
-⚙️ Setup
+# Setup
+Set your GitHub login credentials as environment variables
 
-    Set your GitHub login credentials as environment variables:
 Linux/macOS
 
     export EMAIL="your_email@example.com"
@@ -34,8 +34,8 @@ Windows (CMD)
 
 Run the script:
 
-    python github_streak.py
+    python github_Streak.py
 
-✅ Output
+# Output
 The script will print your current GitHub login streak to the console
 The Current Login Streak Is: 56
