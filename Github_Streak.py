@@ -28,10 +28,10 @@ service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.set_page_load_timeout(60)
 
-
+driver.get("https://github.com")
 time.sleep(2)
 method, path = (By.XPATH, "//*[contains(@class, 'HeaderMenu-link--sign-in')]")
-signin = driver.find_element(method, path)
+signin =driver.find_element(method, path)
 signin.click()
 time.sleep(2)
 user=driver.find_element("xpath", '//*[@id="login_field"]')
