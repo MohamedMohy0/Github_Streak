@@ -59,3 +59,4 @@ for i,t in enumerate(texts):
         response = requests.post(url, data=payload)
 time.sleep(5)
 driver.quit()
+
