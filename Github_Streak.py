@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 from fake_useragent import UserAgent
@@ -28,7 +30,10 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.maximize_window()
 driver.get("https://github.com/")
 time.sleep(2)
-signin=driver.find_element("xpath", '//*[@class="HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded rounded-lg-0 px-2 py-1"]') 
+
+wait = WebDriverWait(driver, 10)
+signin = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@class="HeaderMenu-link HeaderMenu-link--sign-in HeaderMenu-button flex-shrink-0 no-underline d-none d-lg-inline-flex border border-lg-0 rounded rounded-lg-0 px-2 py-1"]')))
+
 signin.click()
 time.sleep(2)
 user=driver.find_element("xpath", '//*[@id="login_field"]')
