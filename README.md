@@ -36,7 +36,9 @@ Windows (CMD)
     set TOKEN="your_bot_token"
     set ID="your_chat_id"
 
+Github Streak image
 
+    driver.get("your_Streak_link")
 
 Run the script:
 
