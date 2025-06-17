@@ -44,7 +44,7 @@ signin_button = driver.find_element(By.XPATH, '//*[@class="btn btn-primary btn-b
 signin_button.click()
 
 time.sleep(1)
-driver.get(os.environ.get('STREAK'))
+driver.get("https://camo.githubusercontent.com/f709f1852ab978e56d4c6fa3a598216d3cb0b3923519ac0e8762712ff67335f1/68747470733a2f2f6769746875622d726561646d652d73747265616b2d73746174732e6865726f6b756170702e636f6d2f3f757365723d4d6f68616d65644d6f687930267468656d653d746f6b796f6e69676874")
 time.sleep(2)
 texts = driver.find_elements(By.TAG_NAME, 'text')
 
