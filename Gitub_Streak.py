@@ -28,14 +28,6 @@ service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.set_page_load_timeout(60)
 
-try:
-    driver.get("https://github.com")
-except Exception as e:
-    print("Error:", e)
-    with open("debug.html", "w", encoding="utf-8") as f:
-        f.write(driver.page_source)
-    driver.save_screenshot("error.png")
-
 
 time.sleep(2)
 method, path = (By.XPATH, "//*[contains(@class, 'HeaderMenu-link--sign-in')]")
