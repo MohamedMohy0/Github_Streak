@@ -48,15 +48,18 @@ driver.get("https://camo.githubusercontent.com/f709f1852ab978e56d4c6fa3a598216d3
 time.sleep(2)
 texts = driver.find_elements(By.TAG_NAME, 'text')
 
+message = ("Error")
+
 for i,t in enumerate(texts):
     if i==5: 
         message = (f"The Current Login Streak Is:{t.text}")
-        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-        payload = {
-            'chat_id': chat_id,
-            'text': message
-        }
-        response = requests.post(url, data=payload)
+        
+url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+payload = {
+'chat_id': chat_id,
+'text': message
+}
+response = requests.post(url, data=payload)
 time.sleep(5)
 driver.quit()
 
