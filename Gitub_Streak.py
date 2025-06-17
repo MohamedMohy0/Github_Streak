@@ -10,6 +10,8 @@ import os
 #############################################################
 Email=os.environ.get('EMAIL')
 Pass=os.environ.get('PASS')
+bot_token = os.environ.get('TOKEN')
+chat_id = os.environ.get('ID')
 #############################################################
 
 ua = UserAgent()
@@ -17,10 +19,10 @@ user_agent = ua.random
 chrome_options = Options()
 chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 chrome_options.add_argument(f"user-agent={user_agent}")
-# chrome_options.add_argument("--disable-gpu")
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--no-sandbox")
-# chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.maximize_window()
@@ -45,7 +47,14 @@ texts = driver.find_elements(By.TAG_NAME, 'text')
 
 for i,t in enumerate(texts):
     if i==5: 
-        print("The Current Login Streak Is:", t.text)
+        message = ("The Current Login Streak Is:", t.text)
+        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+        payload = {
+            'chat_id': chat_id,
+            'text': message
+        }
+        response = requests.post(url, data=payload)
 
 time.sleep(5)
 driver.quit()
+
