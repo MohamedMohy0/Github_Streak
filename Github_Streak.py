@@ -51,13 +51,14 @@ texts = driver.find_elements(By.TAG_NAME, 'text')
 message = ("Error")
 
 for i,t in enumerate(texts):
-    message = (f"The Current Login Streak Is:{t.text}")
-    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    payload = {
-    'chat_id': chat_id,
-    'text': message
-    }
-    response = requests.post(url, data=payload)
+    if i==5:
+        message = (f"The Current Login Streak Is:{t.text}")
+url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+payload = {
+'chat_id': chat_id,
+'text': message
+}
+response = requests.post(url, data=payload)
 time.sleep(5)
 driver.quit()
 
