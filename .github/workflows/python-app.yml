@@ -1,0 +1,46 @@
+name: Run Selenium Script every 8 hours
+
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 */8 * * *'  # تشغيل عند الدقيقة 50 من كل ساعة
+  workflow_dispatch:  
+
+permissions:
+  contents: read  # manual trigger
+
+jobs:
+  run-selenium:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'  # or your preferred version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install selenium webdriver-manager fake-useragent requests
+
+    - name: Install Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-browser chromium-chromedriver
+
+    - name: Run selenium script
+      env:
+        EMAIL: ${{ secrets.EMAIL }}
+        PASS: ${{ secrets.PASS }}
+        TOKEN: ${{ secrets.TOKEN }}
+        ID: ${{ secrets.ID }}
+      run: |
+        python Github_Streak.py
