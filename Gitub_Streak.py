@@ -57,4 +57,3 @@ for i,t in enumerate(texts):
 
 time.sleep(5)
 driver.quit()
-
